@@ -28,8 +28,6 @@ dependencies:
     - libepoxy-dev
     - libfontconfig1-dev
     - libharfbuzz-dev
-    - libwayland-dev
-    - wayland-protocols
     - libxkbcommon-dev
     - libx11-dev
     - libxext-dev
