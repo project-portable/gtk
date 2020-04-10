@@ -57,6 +57,8 @@ dependencies:
 
 steps:
   before:
+    - sudo apt remove wayland*
+    - sudo apt autoremove
     - tar -xf 1.18.0.tar.gz
     - cd wayland-1.18.0
     - meson build_
