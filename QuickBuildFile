@@ -55,9 +55,16 @@ dependencies:
 
   download:
     - https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.18.tar.xz
+    - https://github.com/wayland-project/wayland/archive/1.18.0.tar.gz
 
 steps:
   before:
+    - tar -xf 1.18.0.tar.gz
+    - cd wayland-1.18.0
+    - meson build_
+    - ninja -C _build
+    - sudo ninja -C _build install
+    - cd ..
     - tar -xJf  gtk+-3.24.18.tar.xz
     - mv gtk+-3.24.18/* .
     - git clone https://github.com/project-portable/harfbuzz.git
