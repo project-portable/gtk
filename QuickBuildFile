@@ -1,0 +1,67 @@
+name: gtk
+slug: project-portable/gtk
+ 
+build:
+  configure: meson
+  make: ninja
+
+dependencies:
+  quickbuild:
+    - https://github.com/project-portable/harfbuzz/releases/download/continuous/harfbuzz.tar.gz
+  apt:
+    - gtk-doc-tools (>= 1.20)
+    - dh-autoreconf
+    - docbook-xml
+    - docbook-xsl
+    - pkg-config
+    - autotools-dev
+    - dbus
+    - gsettings-desktop-schemas
+    - adwaita-icon-theme
+    - at-spi2-core
+    - libglib2.0-dev
+    - libgdk-pixbuf2.0-dev
+    - libpango1.0-dev
+    - libatk1.0-dev
+    - libatk-bridge2.0-dev
+    - libegl1-mesa-dev
+    - libepoxy-dev
+    - libfontconfig1-dev
+    - libharfbuzz-dev
+    - libwayland-dev
+    - wayland-protocols
+    - libxkbcommon-dev
+    - libx11-dev
+    - libxext-dev
+    - libxi-dev
+    - libxml2-utils
+    - libxrandr-dev
+    - libxcursor-dev
+    - libxcomposite-dev
+    - libxdamage-dev
+    - libxkbfile-dev
+    - libxinerama-dev
+    - libxfixes-dev
+    - libcairo2-dev
+    - libcups2-dev
+    - libcolord-dev
+    - librest-dev
+    - libjson-glib-dev
+    - gobject-introspection
+    - libgirepository1.0-dev
+    - xauth
+    - xsltproc
+    - xvfb
+
+  download:
+    - https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.18.tar.xz
+
+steps:
+  before:
+    - tar -xJf  gtk+-3.24.18.tar.xz
+    - mv gtk+-3.24.18/* .
+    - git clone https://github.com/project-portable/harfbuzz.git
+    - cd harfbuzz
+    - sed -i '38,39d' QuickBuildFile 
+    - bash quick-deploy
+    - cd ..
